@@ -4,7 +4,7 @@ const PORT = 8000;
 const SERVER = "http://localhost:" + String(PORT);
 
 /* socket io */
-const app = require("./client");
+const app = require("./app");
 const http_con = require("http");
 const server = http_con.Server(app);
 const io = require("socket.io").listen(server);
