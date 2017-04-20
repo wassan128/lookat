@@ -1,0 +1,40 @@
+body {
+	background: rgba(255, 255, 255, 0.85);
+	color: #000;
+}
+header {
+	border-color: #CCC;
+}
+main {
+	margin: 3em 1em 1em;
+	text-align: center;
+}
+	main div {
+		margin-top: 1em;
+		width: 100%;
+		border-bottom: 1px solid #CCC;
+	}
+		main div img {
+			width: 500px;
+			padding: 4em 0;
+		}
+	main p {
+		padding: 1em 0;
+		font-size: 11pt;
+	}
+		main p a {
+			text-decoration: none;
+			border-radius: 5px;
+			color: #FFF;
+			background: rgb(42, 42, 160);
+			margin: 0.3em;
+			padding: 0.5em;
+		}
+footer {
+	text-align: center;
+}
+	footer p {
+		font-size: 9pt;
+		color: #555;
+	}
+

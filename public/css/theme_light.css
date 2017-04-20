@@ -1,0 +1,36 @@
+*::-webkit-scrollbar-track {
+	background: rgba(235, 235, 235, 1);
+}
+*::-webkit-scrollbar-thumb {
+    background: rgba(200, 200, 200, 1);
+}
+header {
+	color: #CCC;
+	background: rgba(250, 250, 250, 0.8);
+}
+
+main {
+	color: #666;
+	background: rgba(255, 255, 255, 0.85);
+}
+	p#mails-zero {
+		color: #AAA;
+	}
+	div.newmails {
+		background: rgba(230, 230, 200, 0.5);
+	}
+		div.mails:not(:last-child) {
+			border-bottom: 1px solid #888;
+		}
+		p.mails-sender {
+			color: #333;
+		}
+		span.mails-email {
+			color: #999;
+		}
+		p.mails-date {
+			color: #888;
+		}
+			p.fav {
+				color: #009fff;
+			}

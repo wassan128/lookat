@@ -1,0 +1,25 @@
+{
+  "name": "lookat",
+  "version": "1.0.0",
+  "description": "outlook mail viewer",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "outlook"
+  ],
+  "author": "wassan128",
+  "license": "MIT",
+  "dependencies": {
+    "electron-proxy-agent": "^1.0.2",
+    "express": "^4.14.0",
+    "jquery": "^3.1.1",
+    "node-outlook": "^1.1.6",
+    "pug": "^2.0.0-beta6",
+    "simplayer": "0.0.8",
+    "simple-oauth2": "^1.0.1",
+    "socket.io": "^1.5.1",
+    "sqlite3": "^3.1.8"
+  }
+}

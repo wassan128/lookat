@@ -1,0 +1,123 @@
+html, body, main {
+	width: 100%;
+}
+
+
+div#mailbox {
+	width: 100%;
+	min-height: 465px;
+	box-sizing: border-box;
+}
+	p#mails-zero {
+		padding: 1em;
+		font-size: 20pt;
+		color: #666;
+		text-align: center;
+	}
+	div.mails {
+		box-sizing: border-box;
+		width: 100%;
+		padding: 0.5em;
+		text-align: center;
+	}
+	div.newmails {
+	}
+		div.mails > *, div#modal-body > * {
+			padding: 0.3em;
+		}
+		div.mails *, div#modal-body * {
+			text-align: left;
+		}
+		p.mails-sender {
+			font-size: 11pt;
+			font-weight: bold;
+			word-wrap: break-word;
+		}
+			span.mails-email {
+				font-size: 9pt;
+			}
+		p.mails-subject {
+			font-size: 11pt;
+			padding: 0.3em 0;
+		}
+		div.mails-footer {
+		}
+			div.mails-footer > * {
+				padding: 0.2em 0;
+			}
+			p.mails-date {
+				font-size: 9pt;
+				float: left;
+			}
+			p.mails-delete, p.mails-fav {
+				font-size: 9pt;
+				margin-left: 1em;
+				padding: 0 0 0 0.5em;
+				float: left;
+				cursor: pointer;
+			}
+				p.mails-delete i, p.mails-fav i {
+					font-size: 9pt;
+				}
+			p.unfav {
+				color: #888;
+			}
+			p.mails-body-open {
+				font-size: 9pt;
+				border-radius: 3px;
+				width: 120px;
+				text-align: center;
+				color: #EEE;
+				cursor: pointer;
+				background: #232272;
+				float: right;
+			}
+				p.mails-body-open i {
+					font-size: 9pt;
+				}
+div#modal-body {
+	width: 90%;
+	height: 90%;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+	overflow: hidden;
+	background: rgba(255, 255, 255, 0.9);
+	box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
+	display: none;
+}
+	p.mails-body-close {
+		position: fixed;
+		z-index: 9999;
+		bottom: 30px;
+		right: 50px;
+		background: #EC4342;
+		color: #FFF;
+		width: 100px;
+		border-radius: 3px;
+		text-align: center;
+		font-size: 9pt;
+		cursor: pointer;
+		box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
+	}
+		p.mails-body-close i {
+			font-size: 9pt;
+		}
+	iframe {
+		display: none;
+		border: none;
+		width: 99%;
+		height: 98%;
+		margin: 0 auto;
+		padding: 1em;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		overflow: auto;
+	}
+

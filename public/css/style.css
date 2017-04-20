@@ -1,0 +1,136 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 11pt;
+	font-weight: normal;
+	font-family: メイリオ;
+	scrollbar-base-color: transparent;
+}
+.clearfix:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+}
+*::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	border-radius: 10px;
+}
+*::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+}
+html {
+}
+body {
+	-webkit-user-select: none;
+	color: #444;
+}
+	header {
+		-webkit-app-region: drag;
+		height: 25px;
+		line-height: 25px;
+		font-size: 10pt;
+		padding: 5px;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		color: #000;
+		background: rgba(255, 255, 255, 0.8);
+		border-bottom: 1px solid #666;
+	}
+		header div {
+			height: 100%;
+			text-align: center;
+		}
+				div#head-logo img {
+					height: 25px;
+					vertical-align: middle;
+				}
+		div#head-menu {
+		}
+			a#menu-button img {
+				-webkit-app-region: no-drag;
+				position: absolute;
+				cursor: pointer;
+				top: 12px;
+				right: 20px;
+				width: 12px;
+			}
+			div#head-menu ul {
+				display: none;
+				list-style: none;
+				position: absolute;
+				top: 35px;
+				right: 10px;
+				padding: 0;
+				margin: 0;
+				text-align: left;
+				box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+			}
+				div#head-menu ul li {
+					background: rgba(255, 255, 255, 0.8);
+					padding: 0.2em;
+					width: 200px;
+					border-bottom: 1px solid #CCC;
+					transition: .3s;
+				}
+				div#head-menu ul li:hover {
+					background: rgba(225, 225, 225, 0.8);
+				}
+					div#head-menu ul li a {
+						display: block;
+						width: 100%;
+						height: 30px;
+						line-height: 30px;
+						cursor: pointer;
+					}
+						div#head-menu ul li a img {
+							height: 100%;
+						}
+		div#head-search {
+			background: rgba(0, 0, 100, 0.5);
+			border-bottom: 1px solid #666;
+			position: absolute;
+			top: 35px;
+			left: 0;
+			width: 100%;
+			padding: 0.5em;
+			display: none;
+		}
+			#head-search input[type="text"] {
+				height: 15px;
+				border: none;
+				padding: 10px;
+				outline: none;
+				font-size: 8pt;
+				background: #EEE;
+				margin-right: 70px;
+			}
+			#head-search button {
+				border: none;
+				vertical-align: middle;
+				position: absolute;
+				width: 35px;
+				height: 35px;
+				cursor: pointer;
+				outline: none;
+			}
+			#menu-search {
+				background: #5a3399;
+				margin-left: -70px;
+			}
+			#menu-no-filter {
+				background: #C66;
+				margin-left: -35px;
+			}
+				#head-search button img {
+					width: 12px;
+					vertical-align: middle;
+				}
+	main {
+		margin-top: 35px;
+	}

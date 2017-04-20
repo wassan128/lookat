@@ -1,0 +1,59 @@
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		title= title
+		link(rel="stylesheet" href="/fontello/css/fontello.css")
+		link(rel="stylesheet" href="/css/style.css")
+		link(rel="stylesheet" href="/css/mail.css")
+		link(rel="stylesheet" href="/css/theme_dark.css" id="theme")
+		script(src="/socket.io/socket.io.js")
+		script(src="/js/jquery-1.12.4.min.js")
+		script(src="/js/page.js")
+		script(src="/js/mails.js")
+	body(id="lookat")
+		header(class="clearfix")
+			div(id="head-logo")
+				img(src="../image/logo_head.png" alt="るっく＠")
+			div(id="head-menu")
+				a(id="menu-button"): img(src="../image/menu_open.png" alt="メニュー")
+				ul
+					li
+						a(class="menu-buttons" id="menu-faved"): img(src="../image/menu_fav.png" alt="お気に入り一覧")
+					li
+						a(class="menu-buttons" id="menu-filter"): img(src="../image/menu_filter.png" alt="フィルター")
+					li
+						a(class="menu-buttons" id="menu-theme"): img(src="../image/menu_theme.png" alt="テーマ切替")
+					li
+						a(class="menu-buttons" id="menu-logout" href="/logout"): img(src="../image/menu_logout.png" alt="ログアウト")
+			div(id="head-search")
+				input(id="keyword" type="text" placeholder="件名で検索")
+				button(id="menu-search"): img(src="../image/menu_search.png" alt="検索")
+				button(id="menu-no-filter"): img(src="../image/menu_no_filter.png" alt="検索終了")
+		main
+			div(id="mailbox")
+				each msg in message
+					div(class="mails clearfix" id="mails" + msg["id"])
+						div(class="mails-header")
+							p(class="mails-sender") #{msg["sender"]} 
+								span(class="mails-email") #{msg["email"]}
+						div(class="mails-body")
+							p(class="mails-subject") #{msg["subject"]}
+						div(class="mails-footer clearfix")
+							p(class="mails-date") #{msg["date"]}
+							p(class="mails-delete") 
+								i(class="icon-trash") 削除
+							
+							if msg["fav_flag"] == 0
+								p(class="mails-fav")
+									i(class="icon-star") お気に入り
+							else
+								p(class="mails-fav fav")
+									i(class="icon-star") お気に入り
+							
+							p(class="mails-body-open")
+								i(class="icon-mail") 本文を開く
+			div(id="modal-body")
+				p(class="mails-body-close")
+					i(class="icon-cancel") 本文を閉じる
+				iframe(srcdoc="" frameborder="0")
