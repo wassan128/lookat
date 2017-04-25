@@ -59,7 +59,7 @@ const get_latest_rowid = (stmt, data) => {
 		db.serialize(() => {
 			stmt.run(data, (error) => {
 				if (!error) {
-					db.get("select id from messages where msg_id=\"" + data[1] + "\"", (error, row) => {
+					db.get("select id from messages where msg_id = ?", data[1], (error, row) => {
 						console.log(data[1], row);
 						if (error) {
 							reject(error);
