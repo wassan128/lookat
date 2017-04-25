@@ -77,7 +77,7 @@ const is_auth = (res, req) => {
 	if (cookie === "error") return false;
 	
 	const expiration = new Date(parseFloat(cookie));
-	return (expiration < new Date()) ? false : true;
+	return new Date() <= expiration;
 }
 
 
