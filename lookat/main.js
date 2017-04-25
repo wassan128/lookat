@@ -1,6 +1,6 @@
 "use strict";
 
-require("./app");
+require("../app");
 const electron = require("electron");
 
 const {app} = electron;

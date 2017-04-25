@@ -8,11 +8,11 @@ const http_con = require("http");
 const server = http_con.Server(app);
 const io = require("socket.io").listen(server);
 
-const my_utils = require("./utils");
-const my_auth_helper = require("./auth_helper");
-const my_db = require("./db");
-const my_mail = require("./mail");
-const my_cnf = require("./config");
+const my_utils = require("./lookat/utils");
+const my_auth_helper = require("./lookat/auth_helper");
+const my_db = require("./lookat/db");
+const my_mail = require("./lookat/mail");
+const my_cnf = require("./lookat/config");
 
 /* express settings */
 app.use(express.static(__dirname + "/public"));
