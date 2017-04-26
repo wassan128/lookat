@@ -10,10 +10,22 @@ const my_cnf = require("./config");
 
 const SOUND_PATH = my_cnf["SERVER"] + "/sound";
 
+const SCHEMA = `
+create table if not exists message(
+    id integer primary key autoincrement,
+    msg_id,
+    date,
+    sender,
+    email,
+    subject,
+    content,
+    del_flag,
+    fav_flag
+);`;
 
 const fetch_mails = (callback) => {
 	db.serialize(() => {
-		db.run("create table if not exists messages(id integer primary key autoincrement, msg_id, date, sender, email, subject, content, del_flag, fav_flag);");
+		db.run(SCHEMA);
 		db.all("select id,msg_id,date,sender,email,subject,fav_flag from messages where del_flag=0 order by id desc", (error, result) => {
 			if (error) {
 				console.log(error);
