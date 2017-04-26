@@ -11,7 +11,7 @@ const my_cnf = require("./config");
 const SOUND_PATH = my_cnf["SERVER"] + "/sound";
 
 const SCHEMA = `
-create table if not exists message(
+create table if not exists messages(
     id integer primary key autoincrement,
     msg_id,
     date,
