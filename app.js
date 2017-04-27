@@ -43,7 +43,7 @@ app.get("/mail", (req, res) => {
 
 app.get("/update", (req, res) => {
 	const authed = is_auth(res, req);
-	my_auth_helper.get_access_token(authed, req, res, function(error, token) {
+	my_auth_helper.get_access_token(authed, req, res, (error, token) => {
 		if (token) {
 			const email = my_utils.get_val_from_cookie(res, 'lookat-email', req.headers.cookie);
 			const opts = {
@@ -82,29 +82,29 @@ const is_auth = (res, req) => {
 
 
 /* Events handlig (using socket.io) */
-io.on("connection", function(socket) {
-	socket.on("disconnect", function() {
+io.on("connection", (socket) => {
+	socket.on("disconnect", () => {
 	});
 
-	socket.on("fav", function(ids) {
+	socket.on("fav", (ids) => {
 		my_db.set_flag_val("fav", 1, ids, (ret) => {
 			io.emit("faved", ret);
 		});
 	});
 
-	socket.on("del", function(ids) {
+	socket.on("del", (ids) => {
 		my_db.set_flag_val("del", 1, ids, (ret) => {
 			io.emit("deled", ret);
 		});
 	});
 
-	socket.on("unfav", function(ids) {
+	socket.on("unfav", (ids) => {
 		my_db.set_flag_val("fav", 0, ids, (ret) => {
 			io.emit("unfaved", ret);
 		});
 	});
 
-	socket.on("get_mailbody_call", function(ids) {
+	socket.on("get_mailbody_call", (ids) => {
 		my_db.get_mailbody(ids, (ret) => {
 			io.emit("get_mailbody_ret", ret);
 		});
