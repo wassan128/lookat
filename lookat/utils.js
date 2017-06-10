@@ -1,11 +1,11 @@
 "use strict";
 
-const get_timestamp = (s) => {
+function get_timestamp(s) {
 	return new Date(s).getTime();
 }
 exports.get_timestamp = get_timestamp;
 
-const get_val_from_cookie = (response, key, cookie) => {
+function get_val_from_cookie(response, key, cookie) {
 	try {
 		if (cookie.indexOf(key) !== -1) {
 			const start = cookie.indexOf(key) + key.length + 1;

@@ -23,7 +23,7 @@ create table if not exists messages(
     fav_flag
 );`;
 
-const fetch_mails = (callback) => {
+function fetch_mails(callback){
 	db.serialize(() => {
 		db.run(SCHEMA);
 		db.all("select id,msg_id,date,sender,email,subject,fav_flag from messages where del_flag=0 order by id desc", (error, result) => {
@@ -37,7 +37,7 @@ const fetch_mails = (callback) => {
 }
 exports.fetch_mails = fetch_mails;
 
-const get_prev_date = (callback) => {
+function get_prev_date(callback) {
 	let prev_date = null;
 	db.serialize(() => {
 		db.get("select date from messages where id=(select max(id) from messages)", (error, row) => {
@@ -49,7 +49,7 @@ const get_prev_date = (callback) => {
 	});
 }
 
-const parse_mails = (message) => {
+function parse_mails(message) {
 	let msg = {};
 	msg["msg_id"] = message.Id.split("==")[0];
 	msg["date"] = new Date(message.ReceivedDateTime).toLocaleString();
@@ -66,7 +66,7 @@ const parse_mails = (message) => {
 }
 exports.parse_mails = parse_mails;
 
-const get_latest_rowid = (stmt, data) => {
+function get_latest_rowid(stmt, data){
 	return new Promise((resolve, reject) => {
 		db.serialize(() => {
 			stmt.run(data, (error) => {
@@ -88,7 +88,7 @@ const get_latest_rowid = (stmt, data) => {
 }
 
 let load_flag = false;
-const insert_mails = (msg, callback) => {
+function insert_mails(msg, callback) {
 	db.serialize(() => {
 		const stmt = db.prepare("insert into messages values (?,?,?,?,?,?,?,?,?)");
 		get_prev_date((prev_date) => {
@@ -117,10 +117,12 @@ const insert_mails = (msg, callback) => {
 }
 exports.insert_mails = insert_mails;
 
-const load_fin = () => load_flag = false;
+function load_fin() {
+    load_flag = false;
+}
 exports.load_fin = load_fin;
 
-const get_mailbody = (ids, callback) => {
+function get_mailbody(ids, callback) {
 	db.serialize(() => {
 		db.get("select content from messages where id= ?", {
 			1: ids
@@ -135,7 +137,7 @@ const get_mailbody = (ids, callback) => {
 }
 exports.get_mailbody = get_mailbody;
 
-const set_flag_val = (target, val, ids, callback) => {
+function set_flag_val(target, val, ids, callback) {
 	let stmt;
 	if (target === "del") {
 		stmt = db.prepare("update messages set subject='', content='', " + target + "_flag=" + val + " where id=?");
@@ -154,7 +156,7 @@ const set_flag_val = (target, val, ids, callback) => {
 }
 exports.set_flag_val = set_flag_val;
 
-const delete_by_id = (ids, callback) => {
+function delete_by_id(ids, callback) {
 	const stmt = db.prepare("delete from messages where id=?")
 	db.serialize(() => {
 		stmt.run(ids, (error) => {
@@ -168,7 +170,7 @@ const delete_by_id = (ids, callback) => {
 }
 exports.delete_by_id = delete_by_id;
 
-const close_db = () => {
+function close_db() {
 	db.close();
 }
 exports.close_db = close_db;
