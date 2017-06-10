@@ -72,7 +72,7 @@ app.get("/logout", (req, res) => {
 	res.redirect("/");
 });
 
-const is_auth = (res, req) => {
+function is_auth(res, req) {
 	const cookie = my_utils.get_val_from_cookie(res, 'lookat-token-expires', req.headers.cookie);
 	if (cookie === "error") return false;
 	
