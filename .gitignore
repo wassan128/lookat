@@ -1,4 +1,7 @@
+*.un~
+*.*~
 node_modules/
+build/
 public/sound/
 public/fontello/
 lookat/config.js
