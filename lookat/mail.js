@@ -4,7 +4,7 @@ const outlook = require("node-outlook");
 
 const my_db = require("./db");
 
-const get_user_email = (token, callback) => {
+function get_user_email(token, callback) {
 	outlook.base.setApiEndpoint("https://outlook.office.com/api/v2.0");
 	const queryParams = {
 		"$select": "DisplayName, EmailAddress",
@@ -20,7 +20,7 @@ const get_user_email = (token, callback) => {
 }
 exports.get_user_email = get_user_email;
 
-const get_mails = (email, token, opts, callback) => {
+function get_mails(email, token, opts, callback) {
 	outlook.base.setApiEndpoint("https://outlook.office.com/api/v2.0");
 	outlook.base.setAnchorMailbox(email);
 	outlook.mail.getMessages({token: token, useMe: true, odataParams: opts, folderId: "Inbox"}, (error, result) => {

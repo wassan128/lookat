@@ -14,7 +14,7 @@ const scopes = [
 	"https://outlook.office.com/mail.read"
 ];
 
-const get_auth_url = () => {
+function get_auth_url() {
 	const ret = oauth2.authorizationCode.authorizeURL({
 		redirect_uri: redirect_uri,
 		scope: scopes.join(" ")
@@ -23,7 +23,7 @@ const get_auth_url = () => {
 }
 exports.get_auth_url = get_auth_url;
 
-const get_token_from_code = (auth_code, callback, response) => {
+function get_token_from_code(auth_code, callback, response) {
 	let token;
 	oauth2.authorizationCode.getToken({
 		code: auth_code,
@@ -40,7 +40,7 @@ const get_token_from_code = (auth_code, callback, response) => {
 }
 exports.get_token_from_code = get_token_from_code;
 
-const get_access_token = (authed, request, response, callback) => {
+function get_access_token(authed, request, response, callback){
 	if (!authed) {
 		console.log("[get_access_token]" + request.headers.cookie);
 		const refresh_token = my_utils.get_val_from_cookie(response, 'lookat-refresh-token', request.headers.cookie);
@@ -66,14 +66,14 @@ const get_access_token = (authed, request, response, callback) => {
 }
 exports.get_access_token = get_access_token;
 
-const refresh_access_token = (refreshToken, callback) => {
+function refresh_access_token(refreshToken, callback){
 	console.log("\n\n\nAIEEE:" + refreshToken);
 	const tokenObj = oauth2.accessToken.create({refresh_token: refreshToken});
 	tokenObj.refresh(callback);
 }
 exports.refresh_access_token = refresh_access_token;
 
-const set_cookies = (response, error, token) => {
+function set_cookies(response, error, token){
 	if (error) {
 		response.send(error);
 	} else {
